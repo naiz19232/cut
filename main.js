@@ -1,70 +1,101 @@
-canvas =document.getElementById('myCanvas');
-ctx=canvas.getContext("2d");
-rwidth=100;
-rheight=90;
-bagroundimg="mars.jpg";
-roverimg="rover.png";
-roverx=10;
-rovery=10;
-function add(){
-    bagroundimgtag=new Image();
-    bagroundimgtag.onload=uploadBackground;
-    bagroundimgtag.src=bagroundimg;
-    roverimgtag=new Image();
-    roverimgtag.onload=uploadrover;
-    roverimgtag.src=roverimg;
-}
-function uploadBackground(){
-    ctx.drawImage(bagroundimgtag,0,0,canvas.width,canvas.height)
-}
-function uploadrover(){
-    ctx.drawImage(roverimgtag,roverx,rovery,rwidth,rheight)
-}
-window.addEventListener("keydown",my_keydown);
-function my_keydown(e){
-    keypress=e.keyCode;
-    if(keypress=='38'){
-        up();
-    }
-    if(keypress=='40'){
-        down();
-    }
-    if(keypress=='37'){
-        left();
-    }
-    if(keypress=='39'){
-        right();
-    }
-}
-function up(){
-    if(rovery>=0){
-        rovery=rovery-10;
-        uploadBackground();
-        uploadrover();
-    } 
-}
-function down(){
-    if(rovery<=500){
-        rovery=rovery+10;
-        uploadBackground();
-        uploadrover();
-        
-    }
-}
-function right(){
-    if(roverx<=700){
-        roveryx=roverx+10;
-        uploadBackground();
-        uploadrover();
-        
-    }
-}
-function left(){
-    if(roverx>=0){
-        roverx=roverx-10;
-        uploadBackground();
-        uploadrover();
-        
-    }
+canvas = document.getElementById('myCanvas');
+ctx = canvas.getContext("2d");
+
+rwidth = 100;
+rheight = 90;
+
+background_image = "mars.jpg";
+
+rover_image = "rover.png";
+
+rover_x = 10;
+rover_y = 10;
+
+function add() {
+	background_imgTag = new Image(); 
+	background_imgTag.onload = uploadBackground; 
+	background_imgTag.src = background_image;   
+
+	rover_imgTag = new Image(); 
+	rover_imgTag.onload = uploadrover; 
+	rover_imgTag.src = rover_image;   
 }
 
+function uploadBackground() {
+	ctx.drawImage(background_imgTag, 0, 0, canvas.width, canvas.height);
+}
+
+function uploadrover() {
+	ctx.drawImage(rover_imgTag, rover_x, rover_y, rwidth, rheight);
+}
+
+
+window.addEventListener("keydown", my_keydown);
+
+function my_keydown(e)
+{
+	keyPressed = e.keyCode;
+	console.log(keyPressed);
+		if(keyPressed == '38')
+		{
+			up();
+			console.log("up");
+		}
+		if(keyPressed == '40')
+		{
+			down();
+			console.log("down");
+		}
+		if(keyPressed == '37')
+		{
+			left();
+			console.log("left");
+		}
+		if(keyPressed == '39')
+		{
+			right();
+			console.log("right");
+		}
+}
+
+function up()
+{
+	if(rover_y >=0)
+	{
+		rover_y = rover_y - 10;
+		console.log("When up arrow is pressed,  x = " + rover_x + " | y = " +rover_y);
+		 uploadBackground();
+		 uploadrover();
+	}
+}
+function down()
+{
+	if(rover_y <=500)
+	{
+		rover_y =rover_y+ 10;
+		console.log("When down arrow is pressed,  x = " + rover_x + " | y = " +rover_y);
+		uploadBackground();
+		 uploadrover();
+	}
+}
+function left()
+{
+	if(rover_x >= 0)
+	{
+		rover_x =rover_x - 10;
+		console.log("When left arrow is pressed,  x = " + rover_x + " | y = " +rover_y);
+		uploadBackground();
+		 uploadrover();
+	}
+}
+function right()
+{
+	if(rover_x <= 700)
+	{
+		rover_x =rover_x + 10;
+		console.log("When right arrow is pressed,  x = " + rover_x + " | y = " +rover_y);
+		uploadBackground();
+		uploadrover();
+   }
+}
+	
